@@ -1,0 +1,581 @@
+index,label_name
+1,0-Gas Sender 
+2,0x 
+3,0x Ecosystem 
+4,0xSplits 
+5,0xUniverse 
+6,1inch 
+7,3D Printing 
+8,Aave 
+9,Aave V1 
+10,Aave V2 
+11,ABCC 
+12,Abracadabra.Money 
+13,Across Protocol 
+14,adidas 
+15,Adult 
+16,Advertising 
+17,Agriculture 
+18,Airdrop-Distributor 
+19,Airdrop Hunter 
+20,AirSwap 
+21,Alameda Research 
+22,Alchemist Coin 
+23,Alchemix Finance 
+24,Algorithmic Stablecoin 
+25,Allbit 
+26,Ampleforth 
+27,Analytics 
+28,App Development 
+29,Apparel 
+30,AR 
+31,Arbitrum 
+32,Arbitrum Nova 
+33,Arbitrum One 
+34,ARCx 
+35,Armor.fi 
+36,Art 
+37,Art Blocks 
+38,Artificial Intelligence 
+39,Artworks 
+40,AscendEX 
+41,Asset Management 
+42,Asset Token 
+43,AtomSolutions 
+44,Auction 
+45,Audius 
+46,Augmented Finance 
+47,Augur 
+48,Aura Finance 
+49,Aurora 
+50,Authentication 
+51,Authereum 
+52,Avalanche 
+53,Aviation 
+54,Axie Infinity 
+55,Backrunning Bots 
+56,Balancer 
+57,Balancer Vested Shareholders 
+58,Bancor 
+59,Bancor Contract Vulnerability 
+60,Band 
+61,Banking 
+62,Basic Attention Token 
+63,Beacon Depositor 
+64,Beauty 
+65,Beeple 
+66,Beverage 
+67,Bgogo 
+68,Binance 
+69,Bitcoin Pegged 
+70,Bitcoin Suisse 
+71,BitcoinSoV 
+72,BitDAO 
+73,Bitfinex 
+74,Bithumb 
+75,BitMart 
+76,BitMEX 
+77,Bitpie 
+78,Bitpoint Hack 
+79,Bitstamp 
+80,BitTorrent 
+81,Bittrex 
+82,Blockchain 
+83,Blockchain Cuties 
+84,Blockchain Phone 
+85,Blocked 
+86,BlockFi 
+87,Bloom 
+88,bloXroute 
+89,Bounties Network 
+90,Bounty 
+91,Brave Frontier Heroes 
+92,Bridge 
+93,Bridged Token 
+94,Bugs 
+95,BuidlGuidl Builders 
+96,Burn 
+97,bZx 
+98,bZx Exploit 
+99,CACHE Gold 
+100,Celer Network 
+101,Celsius Network 
+102,Centre 
+103,Chain 
+104,Chainlink 
+105,Charity 
+106,Cheese Wizard 
+107,Chibi Fighters 
+108,Closure 
+109,Cloud 
+110,Cobinhood 
+111,Coinbase 
+112,Coinbit 
+113,Coinhako 
+114,CoinList 
+115,CoinMarketFeed 
+116,CoinMetro 
+117,Coinone 
+118,Cold Wallet 
+119,Collaboration 
+120,Collectibles 
+121,Commodity 
+122,Communication 
+123,Company Funds 
+124,Compliance 
+125,Compound 
+126,Compound Governance 
+127,Compromised 
+128,Computing 
+129,Connext 
+130,Contract Deployer 
+131,Convex Finance 
+132,COSS.io 
+133,Counter.Market 
+134,Cream.Finance 
+135,Creepz 
+136,CREX24 
+137,Crowdfunding 
+138,Crypto Card 
+139,Crypto.com 
+140,CryptoAtoms 
+141,CryptoBots 
+142,CryptoDozer 
+143,Cryptograph 
+144,CryptoKitties 
+145,Cryptopia Hack 
+146,CryptoPunks 
+147,CryptoRome 
+148,CryptoSaga 
+149,CryptoServal 
+150,CryptoSpells 
+151,CryptoWars 
+152,Currency 
+153,Curve.fi 
+154,DAO 
+155,DAO Funds 
+156,DAppNode 
+157,Darwinia Network 
+158,Data 
+159,Dating 
+160,Decentraland 
+161,Decentralized Web 
+162,DeFi 
+163,DeFi Education Fund 
+164,DeFi Saver 
+165,DeFiance Capital 
+166,Deflationary Token 
+167,Deprecated 
+168,Derivatives 
+169,Design 
+170,DeversiFi 
+171,DEX 
+172,DEX.AG 
+173,dForce 
+174,Diamonds 
+175,DigiFinex 
+176,DINNGO 
+177,Donate 
+178,Dot-pegged 
+179,Dragonereum 
+180,DutchX 
+181,DXdao 
+182,dYdX 
+183,E-Commerce 
+184,Education 
+185,EigenPhi 
+186,Electricity 
+187,Electronics 
+188,Email 
+189,Empty Set Dollar 
+190,Energy Sector 
+191,ENS 
+192,Entertainment 
+193,Environment 
+194,Enzyme Finance 
+195,Erasure 
+196,Escrow 
+197,Esports 
+198,Ether Cards 
+199,Ether Legends 
+200,EtherDelta Hack 
+201,Etheremon 
+202,Ethereum Foundation 
+203,Ethereum Mixer 
+204,Etheroll 
+205,Events 
+206,Evmos 
+207,Exchange 
+208,Exploit 
+209,F2Pool 
+210,Factory Contract 
+211,Fantom 
+212,Farming 
+213,Fashion 
+214,FAT Brands Inc. 
+215,Fei Protocol 
+216,Fiat Gateway 
+217,Finance 
+218,Fintech 
+219,Fitness 
+220,Flagged by SEC 
+221,Flexa 
+222,Flowerpatch 
+223,FOAM 
+224,Fomo3D 
+225,Food 
+226,ForTube 
+227,Fraud Proof 
+228,Freelance 
+229,FTX 
+230,Fund 
+231,Furucombo 
+232,Gambling 
+233,Gaming 
+234,Gas 
+235,Gate.io 
+236,GBX 
+237,Gearbox Protocol 
+238,Geeq 
+239,Gem 
+240,Gemini 
+241,Genesis 
+242,Gitcoin Grantee 
+243,Gitcoin Grants 
+244,Giveth.io 
+245,Gnosis Chain 
+246,Gods Unchained 
+247,Gold 
+248,Governance 
+249,Grantee 
+250,Hakka Finance 
+251,Healthcare 
+252,Heist 
+253,High Risk 
+254,High Transaction Fee 
+255,HitBTC 
+256,Hoo.com 
+257,Hop Protocol 
+258,Hospitality 
+259,Hot Wallet 
+260,Hotbit 
+261,Hotel 
+262,HR 
+263,Human Resource 
+264,Humanity 
+265,Huobi 
+266,Hydro Protocol 
+267,Hyper Dragons 
+268,ICO Wallets 
+269,Identity 
+270,IDEX 
+271,Idle.finance 
+272,Illuvium 
+273,Incubator 
+274,Index 
+275,Index Coop 
+276,InstaDApp 
+277,Insurance 
+278,Insureum 
+279,Interoperability / Cross-Chain 
+280,Inverse Finance 
+281,Investment 
+282,Invoice Financing 
+283,IoT 
+284,Jarvis Network 
+285,Jobs 
+286,Juicebox 
+287,Keep 
+288,Keep2r 
+289,Knowledge 
+290,Kraken 
+291,Kryptono 
+292,KuCoin 
+293,Kyber Network 
+294,Land 
+295,LAToken 
+296,Launchpad 
+297,Layer 2 
+298,LCX AG 
+299,Legal 
+300,Lendf.Me Hack 
+301,Lido 
+302,Liqui.io 
+303,Liquid 
+304,Liquidity 
+305,Liquity 
+306,Livepeer 
+307,Loans 
+308,Logic Contract 
+309,Logistics 
+310,LooksRare 
+311,Loopring 
+312,LORDLESS 
+313,Loyalty and Rewards 
+314,LUKSO Blockchain 
+315,Mainnet Launched 
+316,Maker 
+317,Maker Vault Owner 
+318,MANTRA 
+319,Manufacturing 
+320,Marketing 
+321,Marketplace 
+322,Masternode 
+323,MCDEX 
+324,Media 
+325,MEDIKEY 
+326,MEETtoken 
+327,MegaCryptoPolis 
+328,MekaVerse 
+329,MEME 
+330,MESG 
+331,MetaMask 
+332,Metaverse 
+333,Metis Andromeda 
+334,Metronome 
+335,MEV Bot 
+336,MEV Builder 
+337,MEV Protection 
+338,Microtasking 
+339,Milestone 
+340,Mining 
+341,MiningPoolHub 
+342,Mirror 
+343,Mobile 
+344,Movie / Film 
+345,mStable 
+346,Multichain 
+347,Multisig 
+348,Multisig Owner 
+349,Music 
+350,My Crypto Heroes 
+351,MyEtherWallet 
+352,NACDAQ 
+353,Nation3 
+354,Neo Tokyo 
+355,Neon District 
+356,NEST Protocol 
+357,NetCongestion 
+358,Network 
+359,Network Fork 
+360,News 
+361,Nexo 
+362,Nexus Mutual 
+363,NFT 
+364,Nifty Gateway 
+365,Nitro 
+366,Nomad 
+367,Nuo Network 
+368,Off-Chain 
+369,Oil 
+370,OKEx 
+371,Old Contract 
+372,OlympusDAO 
+373,OMG Network 
+374,Onyx.to 
+375,Oobit 
+376,Ooki 
+377,Open Grants 
+378,OpenSea 
+379,Opium Team 
+380,Opportunist 
+381,Optics 
+382,Optimism 
+383,Options Trading 
+384,Opyn 
+385,Oracle 
+386,Oracle DAO 
+387,Orchid 
+388,Origin Protocol 
+389,Origo 
+390,OTC 
+391,Others 
+392,ParaSwap 
+393,Paribu 
+394,Parity Bug 
+395,Pass 
+396,Payments 
+397,Pet 
+398,Pharmaceutical 
+399,Phish / Hack 
+400,Platform 
+401,Play-to-Earn 
+402,Plus Token Scam 
+403,POA Network 
+404,Polkastarter 
+405,Poloniex 
+406,Polychain Monsters 
+407,Polygon (Matic) 
+408,Ponzi 
+409,PoolTogether 
+410,Portfolio Tracker 
+411,PoS 
+412,Precious Metals 
+413,Prediction 
+414,Prediction Market 
+415,Premia 
+416,Privacy 
+417,Private Transaction 
+418,Proposer Fee Recipient 
+419,Protocol 
+420,Proxy Contract 
+421,Pundi X 
+422,QuadrigaCX 
+423,Radicle 
+424,Radio 
+425,Raiden 
+426,RaidParty 
+427,Rari Capital 
+428,Rarible 
+429,Rating 
+430,Real Estate 
+431,Rebase Token 
+432,Redacted Cartel 
+433,Reflexer Finance 
+434,Refund 
+435,Remitano 
+436,Remittance 
+437,Remme 
+438,Ren 
+439,Rent 
+440,Reputation 
+441,Research 
+442,Reserve Protocol 
+443,ReserveLending 
+444,Resfinex 
+445,Restaurant 
+446,Retail 
+447,Revain 
+448,Revest Finance 
+449,Review 
+450,Ribbon Finance 
+451,Ridesharing 
+452,Robo-Advisor Yield 
+453,Rocket Pool 
+454,Router 
+455,Sablier 
+456,Saddle Finance 
+457,Safe (formerly Gnosis Safe) 
+458,Safe Multisig 
+459,Saffron.Finance 
+460,Sanctioned 
+461,Scam 
+462,Scroll Network 
+463,Security 
+464,Security Token 
+465,Sentinel Protocol 
+466,Services / Solutions 
+467,Set Protocol 
+468,Set Social Trading 
+469,ShapeShift 
+470,Sharing 
+471,Shiba Inu 
+472,Shipping 
+473,Sidechains 
+474,Silverway Platform 
+475,Smart Contract 
+476,Snapshot Voter 
+477,Social Media 
+478,Social Networking 
+479,Software 
+480,Solv Protocol 
+481,Something Fishy ? 
+482,Sorare 
+483,Sorbet Finance 
+484,Spam Token 
+485,Sports 
+486,ST-20 
+487,Stablecoin 
+488,Staking 
+489,StarkNet 
+490,Status 
+491,Stoner Cats 
+492,Storage 
+493,Streaming 
+494,Streamity 
+495,StrongBlock 
+496,Subscription / Membership 
+497,sudoswap 
+498,SuperRare 
+499,Supply Chain 
+500,Surveillance 
+501,Survey 
+502,SushiSwap 
+503,Suspicious 
+504,Swipe.io 
+505,SwipeSwap 
+506,Switcheo 
+507,Sybil Delegate 
+508,Synapse 
+509,Synthetix 
+510,Syscoin 
+511,TAGZ 
+512,Take Action 
+513,tBTC 
+514,Technology 
+515,Telecommunications 
+516,Ticketing 
+517,Tidex 
+518,Token Burn 
+519,Token Contract 
+520,Token Migration 
+521,Token Sale 
+522,Tokenized Asset 
+523,Tokenized Equity 
+524,Tokenlon 
+525,Tools 
+526,Top Degen 
+527,TopBTC 
+528,Tornado.Cash 
+529,Trade.io 
+530,Trading 
+531,Transportation 
+532,Trapped Funds 
+533,Travel 
+534,TRON 
+535,TrustToken 
+536,Typhoon.Cash 
+537,unagii.com 
+538,Unconventional Ordering 
+539,unFederalReserve 
+540,Unibright 
+541,Unicrypt 
+542,Unifier System 
+543,Uniswap 
+544,Unit Protocol 
+545,Unsafe 
+546,Unstoppable Domains 
+547,Upbit 
+548,Upbit Hack 
+549,Value DeFi 
+550,Vaults 
+551,Vehicle 
+552,Venture Capital 
+553,Vesper Finance 
+554,Video 
+555,Vodi X 
+556,VPN 
+557,VR 
+558,Wallet App 
+559,WBTC Merchant 
+560,Website Down 
+561,White Hat Group 
+562,Wi-Fi 
+563,Wirex 
+564,Wormhole 
+565,Wrapped Bitcoin 
+566,Wrapped Token 
+567,Writer 
+568,Yam.Finance 
+569,yearn Slippage 
+570,Yearn.Finance 
+571,YFFI.finance 
+572,YFII.finance 
+573,ygov.finance 
+574,Yield Farming 
+575,YUNBI 
+576,Zapper.Fi 
+577,ZB.com 
+578,Zerion 
+579,Zethr 
+580,Zora 
