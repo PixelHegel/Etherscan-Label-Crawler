@@ -29,8 +29,11 @@ import requests
 from bs4 import BeautifulSoup
 from docopt import docopt
 from tqdm import tqdm
+import urllib3
 
-from etherscanlabel import __version__
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+#from etherscanlabel import __version__
 
 cwd = os.getcwd()
 
@@ -38,13 +41,30 @@ cwd = os.getcwd()
 def join(f):
     return os.path.join(os.path.dirname(__file__), f)
 
+
+def request_retry(url,header):
+    trytimes = 5
+    for i in range(trytimes):
+        if trytimes == 5:
+            sleep(20)
+        try:
+            proxies = None
+            response = requests.get(url, headers=header, verify=False, proxies=None, timeout=5)
+            if response.status_code == 200:
+                return response
+                break
+        except Exception as e:
+            print(f'requests failed {i} time')
+            print(e)
+
+
 def get_labels_from_category(label_category_name,df,startrow,header):
 
     label_category_name = label_category_name.rstrip().lower().replace(' ','-').replace('.','-')
     url = 'https://etherscan.io/accounts/label/{0}/?size=25&start={1}'.format(label_category_name,startrow)
     try:
 
-        response = requests.get(url=url, headers=header)
+        response = request_retry(url, header)
 
         df_list = pd.read_html(response.content)
         df = pd.concat([df,df_list[0]],ignore_index=True)
@@ -73,7 +93,6 @@ def init(args):
             print(__doc__)
             exit(0)
         
-
         df = pd.DataFrame()
         df_result = get_labels_from_category(label_category_name,df,0,data)
         if df_result is not None:
@@ -83,12 +102,13 @@ def init(args):
         else:
             print('Failed to crawl labels from etherscan, no file saved, please double check the category name')
 
+
     else:
-        category_df = pd.read_csv(join("label_category_list.csv")).head(10)
+        category_df = pd.read_csv(join("label_category_list.csv"))
         category_list = category_df['label_name']
         df_list = []
         pbar = tqdm(category_list)
-        for label_category_name in pbar:
+        for idx,label_category_name in enumerate(pbar):
             header_path = args['--header']
             f = open(header_path)
             data = json.load(f)
@@ -104,7 +124,11 @@ def init(args):
                 print(e)
                 continue
             pbar.set_description("Fetching labels of %s" % label_category_name)
-            sleep(1.1)
+            if idx % 9 == 0:
+                sleep(15)
+            else:
+                sleep(1)
+
         
         if df_result is not None:
             path = cwd+'/all_labels.csv'
@@ -116,7 +140,7 @@ def init(args):
 
 
 def main():
-    args = docopt(__doc__,version=__version__)
+    args = docopt(__doc__)
     try:
         init(args)
     except KeyboardInterrupt:
