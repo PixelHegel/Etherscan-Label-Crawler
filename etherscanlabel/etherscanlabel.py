@@ -45,7 +45,7 @@ def join(f):
 def request_retry(url,header):
     trytimes = 5
     for i in range(trytimes):
-        if trytimes == 5:
+        if i == 5:
             sleep(20)
         try:
             proxies = None
