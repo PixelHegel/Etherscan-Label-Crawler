@@ -5,25 +5,32 @@ EtherscanLabelCrawler
 EtherscanLabelCrawler An out-of-the-box ehterscan label crawler, you can use it to get all the labels info from etherscan.
 
 Usage:
- etherscanlabel crawl <labelcategory> [--header <file-path>]
+ etherscanlabel crawl <labelcategory> [--header=<file-path>]
  etherscanlabel -h | --help
 
 Options:
-  --header <file-path>  your header info
+  --header=<file-path>
   --help  -h show help info
 
 Examples:
-etherscanlabel crawl Binance --header /path/to/header.json
+etherscanlabel crawl Binance --header /path/to/header.json  get binance related labels
+etherscanlabel crawl all --header /path/to/header.json  get all labels in the label list
+
+
+You must attach your header file, you can find an example file here: https://github.com/PixelHegel/Etherscan-Label-Crawler/blob/main/header_sample.json
 """
 
-from docopt import docopt
-import requests
-import pandas as pd
-from bs4 import BeautifulSoup
-from time import sleep
-import os
 import json
+import os
+from time import sleep
+
+import pandas as pd
+import requests
+from bs4 import BeautifulSoup
+from docopt import docopt
 from tqdm import tqdm
+
+from etherscanlabel import __version__
 
 cwd = os.getcwd()
 
@@ -36,6 +43,7 @@ def get_labels_from_category(label_category_name,df,startrow,header):
     label_category_name = label_category_name.rstrip().lower().replace(' ','-').replace('.','-')
     url = 'https://etherscan.io/accounts/label/{0}/?size=25&start={1}'.format(label_category_name,startrow)
     try:
+
         response = requests.get(url=url, headers=header)
 
         df_list = pd.read_html(response.content)
@@ -53,17 +61,27 @@ def get_labels_from_category(label_category_name,df,startrow,header):
 
 
 def init(args):
+
     if args["crawl"] and args["<labelcategory>"] !='all':
         label_category_name = args['<labelcategory>']
-        header_path = args['--header']
-        f = open(header_path)
-        data = json.load(f)
+        if args['--header']:
+            header_path = args['--header']
+            f = open(header_path)
+            data = json.load(f)
+        else:
+            print("You must attach your header file, you can find an example file here: https://github.com/PixelHegel/Etherscan-Label-Crawler/blob/main/header_sample.json")
+            print(__doc__)
+            exit(0)
+        
 
         df = pd.DataFrame()
         df_result = get_labels_from_category(label_category_name,df,0,data)
-        path = cwd+'/{0}.csv'.format(label_category_name)
-        df_result.to_csv(path)
-        print('Your label data has saved into {0}'.format(path))
+        if df_result is not None:
+            path = cwd+'/{0}.csv'.format(label_category_name)
+            df_result.to_csv(path)
+            print('Your label data has saved into {0}'.format(path))
+        else:
+            print('Failed to crawl labels from etherscan, no file saved, please double check the category name')
 
     else:
         category_df = pd.read_csv(join("label_category_list.csv")).head(10)
@@ -92,11 +110,13 @@ def init(args):
             path = cwd+'/all_labels.csv'
             df_result.to_csv(path)
             print('Your label data has saved into {0}'.format(path))
+        else:
+            print('Failed to crawl labels from etherscan, no file saved')
 
 
 
 def main():
-    args = docopt(__doc__)
+    args = docopt(__doc__,version=__version__)
     try:
         init(args)
     except KeyboardInterrupt:

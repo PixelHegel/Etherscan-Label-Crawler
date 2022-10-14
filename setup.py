@@ -2,7 +2,7 @@
 Author: pixelhegel pixelhegel@gmail.com
 Date: 2022-10-08 13:10:59
 LastEditors: pixelhegel pixelhegel@gmail.com
-LastEditTime: 2022-10-13 22:23:07
+LastEditTime: 2022-10-14 09:45:24
 FilePath: /Etherscan-Label-Crawler/setup.py
 Description: 
 
@@ -51,7 +51,6 @@ setup(
     zip_safe=False,
     keywords='etherscan label crawler',
     classifiers=[
-        'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
