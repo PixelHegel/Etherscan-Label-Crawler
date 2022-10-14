@@ -5,6 +5,8 @@
         :target: https://app.travis-ci.com/github/PixelHegel/Etherscan-Label-Crawler
 
 
+An out-of-the-box etherscan label crawler, get account labels from etherscan.io eaisly.
+
 
 Installation
 ------------
@@ -37,9 +39,9 @@ Contents of requirements.txt
     beautifulsoup4==4.11.1
     docopt==0.6.2
     notiondict==0.1.1
-    pandas==1.5.0
-    requests==2.28.1
-    setuptools==63.0.0
+    pandas>=1.1.5
+    requests>=2.27.1
+    setuptools>=59.6.0
     tqdm==4.64.1
 
 
