@@ -33,7 +33,7 @@ import urllib3
 import asyncio
 import aiohttp
 import logging
-from aiohttp_retry import RetryClient, ExponentialRetry
+#from aiohttp_retry import RetryClient, ExponentialRetry
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -62,9 +62,9 @@ async def make_request(df,label_category_name,session, url,startrow,header, atte
             except:
                 pass
 
-        #elif attempt < 3:
-        #    print(f'failed #{attempt}')  # to debug, remove later
-         #   return await make_request(df,label_category_name, session, url, startrow, header, attempt + 1)
+        elif attempt < 3:
+            print(f'failed #{attempt}')  # to debug, remove later
+            return await make_request(df,label_category_name, session, url, startrow, header, attempt + 1)
         return None
 
 
