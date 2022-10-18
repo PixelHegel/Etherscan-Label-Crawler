@@ -30,6 +30,10 @@ from bs4 import BeautifulSoup
 from docopt import docopt
 from tqdm import tqdm
 import urllib3
+import asyncio
+import aiohttp
+import logging
+#from aiohttp_retry import RetryClient, ExponentialRetry
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -42,42 +46,48 @@ def join(f):
     return os.path.join(os.path.dirname(__file__), f)
 
 
-def request_retry(url,header):
-    trytimes = 5
-    for i in range(trytimes):
-        if i == 5:
-            sleep(20)
-        try:
-            proxies = None
-            response = requests.get(url, headers=header, verify=False, proxies=None, timeout=5)
-            if response.status_code == 200:
-                return response
-                break
-        except Exception as e:
-            print(f'requests failed {i} time')
-            print(e)
+async def make_request(df,label_category_name,session, url,startrow,header, attempt=0):
+    url = 'https://etherscan.io/accounts/label/{0}/?size=100&start={1}&col=1&order=asc'.format(label_category_name,startrow)
+    async with session.get(url,headers=header) as response:
+        if response.status == 200:
+            try:
+                data = await response.text()
+                df_list = pd.read_html(data)
+                df =  pd.concat([df,df_list[0]],ignore_index=True)
+                if len(df)>=100:
+                    new_startrow = len(df)
+                    if len(df_list[0])==100:
+                        return await make_request(df,label_category_name,session, url,new_startrow,header)
+                return df
+            except:
+                pass
+
+        elif attempt < 3:
+            print(f'failed #{attempt}')  # to debug, remove later
+            return await make_request(df,label_category_name, session, url, startrow, header, attempt + 1)
+        return None
 
 
-def get_labels_from_category(label_category_name,df,startrow,header):
+async def start_crawler(label_category_name,header,pbar):
+    df = pd.DataFrame()
+    #timeout = aiohttp.ClientTimeout(total=3)
+    async with aiohttp.ClientSession() as session:
+        retry_options = ExponentialRetry(attempts=1, max_timeout=10)
+        retry_client = RetryClient(client_session=session,retry_options=retry_options)
+        label_category_name = label_category_name.rstrip().lower().replace(' ','-').replace('.','-')
 
-    label_category_name = label_category_name.rstrip().lower().replace(' ','-').replace('.','-')
-    url = 'https://etherscan.io/accounts/label/{0}/?size=25&start={1}'.format(label_category_name,startrow)
-    try:
-
-        response = request_retry(url, header)
-
-        df_list = pd.read_html(response.content)
-        df = pd.concat([df,df_list[0]],ignore_index=True)
-        if len(df)>=25:
-            new_startrow = len(df)
-            if len(df_list[0])>=25:
-                return get_labels_from_category(label_category_name,df,new_startrow,header)
-        return df
+        result = await make_request(df,label_category_name,retry_client,'',0,header)
+        pbar.update(1)
+        pbar.set_description("Fetching labels of %s" % label_category_name)
+        return result
 
 
-    except Exception as e: 
-        #TODO
-        pass
+async def start_loop_crawler(label_list,header,pbar):
+    async with aiohttp.ClientSession() as client:
+        return await asyncio.gather(*[
+            asyncio.ensure_future(start_crawler(label,header,pbar)) 
+            for label in label_list
+        ])
 
 
 def init(args):
@@ -87,14 +97,15 @@ def init(args):
         if args['--header']:
             header_path = args['--header']
             f = open(header_path)
-            data = json.load(f)
+            header = json.load(f)
         else:
             print("You must attach your header file, you can find an example file here: https://github.com/PixelHegel/Etherscan-Label-Crawler/blob/main/header_sample.json")
             print(__doc__)
             exit(0)
         
-        df = pd.DataFrame()
-        df_result = get_labels_from_category(label_category_name,df,0,data)
+        df_result = asyncio.run(start_crawler(label_category_name,header))
+
+
         if df_result is not None:
             path = cwd+'/{0}.csv'.format(label_category_name)
             df_result.to_csv(path)
@@ -104,32 +115,23 @@ def init(args):
 
 
     else:
-        category_df = pd.read_csv(join("label_category_list.csv"))
-        category_list = category_df['label_name']
-        df_list = []
-        pbar = tqdm(category_list)
-        for idx,label_category_name in enumerate(pbar):
+        if args['--header']:
             header_path = args['--header']
             f = open(header_path)
-            data = json.load(f)
-            try:
-                df_temp = pd.DataFrame()
-                df_temp = get_labels_from_category(label_category_name,df_temp,0,data)
-                if df_temp is not None:
-                    df_temp['category']=label_category_name
-                    df_list.append(df_temp)
+            header = json.load(f)
+        category_df = pd.read_csv(join("label_category_list.csv"))
+        category_list = category_df['label_name']
+        pbar = tqdm(total=len(category_list))
+        loop = asyncio.new_event_loop()
 
-                df_result = pd.concat(df_list,ignore_index=True)
-            except Exception as e: 
-                print(e)
-                continue
-            pbar.set_description("Fetching labels of %s" % label_category_name)
-            if idx % 9 == 0:
-                sleep(15)
-            else:
-                sleep(1)
+        df_list = loop.run_until_complete(start_loop_crawler(category_list,header,pbar))
+                
+        asyncio.set_event_loop(loop)
 
-        
+        loop.close()
+ 
+        df_result = pd.concat(df_list,ignore_index=True)
+        pbar.close()
         if df_result is not None:
             path = cwd+'/all_labels.csv'
             df_result.to_csv(path)
@@ -138,14 +140,12 @@ def init(args):
             print('Failed to crawl labels from etherscan, no file saved')
 
 
-
 def main():
     args = docopt(__doc__)
     try:
         init(args)
     except KeyboardInterrupt:
         sys.exit(0)
-
 
 
 if __name__ == '__main__':
