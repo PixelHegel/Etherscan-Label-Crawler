@@ -33,7 +33,7 @@ import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
-#from etherscanlabel import __version__
+from etherscanlabel import __version__
 
 cwd = os.getcwd()
 
@@ -46,7 +46,7 @@ def request_retry(url,header):
     trytimes = 5
     for i in range(trytimes):
         if i == 5:
-            sleep(20)
+            sleep(15)
         try:
             proxies = None
             response = requests.get(url, headers=header, verify=False, proxies=None, timeout=5)
@@ -140,7 +140,7 @@ def init(args):
 
 
 def main():
-    args = docopt(__doc__)
+    args = docopt(__doc__, version=__version__)
     try:
         init(args)
     except KeyboardInterrupt:
